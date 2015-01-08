@@ -46,7 +46,6 @@ class RpcHttpBindingValidator
 
                 $xPath = "//{$namespace}:Envelope/{$namespace}:Body/*[local-name()='{$methodName}']";
 
-
                 $xmlElements = $xml->xpath($xPath);
 
                 // Check if found SOAPAction
