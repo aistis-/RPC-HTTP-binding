@@ -23,7 +23,7 @@ Content-Type: application/xml
 </SOAP-ENV:Envelope>
 ```
 
-### A list of rules
+## A list of rules
 
 1. The request must be `GET` or `POST`. `DELETE`, `PUT`, `PATCH` etc. is not valid.
 1. The request must have `SOAPAction` parameter.
