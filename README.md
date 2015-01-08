@@ -7,10 +7,9 @@ SOAP specifies a uniform representation for RPC requests and responses which is 
 SOAP messages can be transferred using any protocol and this class in for **HTTP binding validation**.
 
 ## An example of valid HTTP request
-### Headers
+### Header
 ```
 SOAPAction: AwesomeMethod
-Content-Type: application/xml
 ```
 ### Content
 ```
