@@ -26,7 +26,7 @@ class RpcHttpBindingValidator
             // Check if SOAPAction field exists in request header and it is not empty
             if (isset($_SERVER['HTTP_SOAPACTION']) && !empty($_SERVER['HTTP_SOAPACTION'])) {
 
-                // Parse xml and find SOAP-ENV:Body inside SOAP-ENV:Envelope
+                // Parse xml
                 $xml = @simplexml_load_string(file_get_contents('php://input'));
 
                 // Check if xml read was not successful
@@ -46,6 +46,7 @@ class RpcHttpBindingValidator
                 $methodName = htmlspecialchars($_SERVER['HTTP_SOAPACTION']);
                 $methodName = str_replace(array('\'', '"'), '', $methodName);
 
+                // Find Body inside Envelope with SOAP namespaces and a local method name
                 $xPath = "//{$namespace}:Envelope/{$namespace}:Body/*[local-name()='{$methodName}']";
 
                 $xmlElements = $xml->xpath($xPath);
