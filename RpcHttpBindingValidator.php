@@ -37,12 +37,14 @@ class RpcHttpBindingValidator
                 // Namespaces checking
                 $namespace = array_search(self::NS_XML_ENVELOPE, $xml->getNamespaces(), true);
 
-                $methodName = htmlspecialchars($_SERVER['HTTP_SOAPACTION']);
-
                 // Check if namespace in xml was not found
                 if (empty($namespace)) {
                     return false;
                 }
+
+                // Some sanitization
+                $methodName = htmlspecialchars($_SERVER['HTTP_SOAPACTION']);
+                $methodName = str_replace(array('\'', '"'), '', $methodName);
 
                 $xPath = "//{$namespace}:Envelope/{$namespace}:Body/*[local-name()='{$methodName}']";
 
